@@ -52,22 +52,24 @@ func roomManage(ctx context.Context) {
 
 // Room ...
 type Room struct {
-	UUID    uuid.UUID
-	joinCh  chan *Member
-	leaveCh chan uuid.UUID
-	msgCh   chan *models.Message
-	timer   *time.Timer
-	cancel  func()
-	once    sync.Once
+	UUID         uuid.UUID
+	joinCh       chan *Member
+	leaveCh      chan uuid.UUID
+	msgCh        chan *models.Message
+	getMembersCh chan chan []*models.Member
+	timer        *time.Timer
+	cancel       func()
+	once         sync.Once
 }
 
 // NewRoom ...
 func NewRoom(ctx context.Context, room *models.Room) *Room {
 	r := &Room{
-		UUID:    room.UUID,
-		joinCh:  make(chan *Member),
-		leaveCh: make(chan uuid.UUID),
-		msgCh:   make(chan *models.Message),
+		UUID:         room.UUID,
+		joinCh:       make(chan *Member),
+		leaveCh:      make(chan uuid.UUID),
+		msgCh:        make(chan *models.Message),
+		getMembersCh: make(chan chan []*models.Member),
 		timer: time.AfterFunc(TIMEOUT, func() {
 			delRoomCh <- room.UUID
 		}),
@@ -123,6 +125,15 @@ func (r *Room) do(ctx context.Context) {
 					log.Println(err)
 				}
 			}
+		case ch := <-r.getMembersCh:
+			res := make([]*models.Member, 0, len(members))
+			for _, m := range members {
+				res = append(res, &models.Member{
+					UUID:     m.UUID,
+					Nickname: m.Nickname,
+				})
+			}
+			ch <- res
 		}
 		r.timer.Reset(TIMEOUT)
 	}
@@ -148,4 +159,11 @@ func (r *Room) Join(member *Member) {
 // Leave ...
 func (r *Room) Leave(u uuid.UUID) {
 	r.leaveCh <- u
+}
+
+// GetMembers ...
+func (r *Room) GetMembers() []*models.Member {
+	ch := make(chan []*models.Member, 1)
+	r.getMembersCh <- ch
+	return <-ch
 }

@@ -57,6 +57,11 @@ func joinRoom(ws *websocket.Conn) {
 	}
 	ctx := ws.Request().Context()
 	m := NewMember(ctx, room, member, ws)
+	for _, member := range room.GetMembers() {
+		if err := m.Write("join", member); err != nil {
+			log.Println(err)
+		}
+	}
 	room.Join(m)
 	<-ctx.Done()
 }

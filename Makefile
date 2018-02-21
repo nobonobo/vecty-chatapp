@@ -5,11 +5,13 @@ gopherjs:
 devrun:
 	go run main.go -dev
 
-build:
+assets:
 	mkdir -p ./dist/app/assets
 	gopherjs build -m -o ./dist/app/app.js github.com/nobonobo/vecty-sample/app
 	cp -f ./app/index.html ./dist/app/
 	cp -Rf ./app/assets/* ./dist/app/assets/
+
+build: assets
 	go build -o ./dist/server main.go
 
 run:

@@ -23,8 +23,8 @@ func (c *ChatForm) Render() vecty.ComponentOrHTML {
 	return elem.Form(&bs4.InputGroup{
 		Markup: vecty.Markup(
 			vecty.ClassMap{
-				"md-3": true,
 				"mt-3": true,
+				"mb-3": true,
 			},
 		),
 		Children: vecty.List{

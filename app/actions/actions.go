@@ -1,10 +1,19 @@
 package actions
 
-// Action ...
-type Action interface {
-	action()
+// NewRoom ...
+type NewRoom struct {
+	base
+	Nickname string
 }
 
-type base struct{}
+// JoinRoom ...
+type JoinRoom struct {
+	base
+	RoomID   string
+	Nickname string
+}
 
-func (b base) action() {}
+type Message struct {
+	base
+	Message string
+}

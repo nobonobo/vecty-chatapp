@@ -1,51 +1,54 @@
 package components
 
 import (
-	"log"
-
-	"github.com/gopherjs/gopherjs/js"
 	"github.com/gopherjs/vecty"
 	"github.com/gopherjs/vecty/elem"
 	"github.com/gopherjs/vecty/event"
 	"github.com/gopherjs/vecty/prop"
 
 	bs4 "github.com/nobonobo/bootstrap4"
+	"github.com/nobonobo/vecty-sample/app/actions"
+	"github.com/nobonobo/vecty-sample/app/dispatcher"
 )
 
-// NewForm ...
-type NewForm struct {
+// ChatForm ...
+type ChatForm struct {
 	vecty.Core
-	RoomName string `vecty:"prop"`
+	Message string `vecty:"prop"`
 }
 
 // Render ...
-func (c *NewForm) Render() vecty.ComponentOrHTML {
+func (c *ChatForm) Render() vecty.ComponentOrHTML {
 	return &bs4.Card{
 		Children: &bs4.CardBody{
 			Children: vecty.List{
 				elem.Form(
 					&bs4.FormGroup{
 						Children: vecty.List{
-							&bs4.Label{For: "roomName", Children: vecty.Text("Room Name:")},
+							&bs4.Label{For: "message", Children: vecty.Text("Message:")},
 							&bs4.Input{
 								Type:  prop.TypeText,
-								Name:  "roomName",
-								ID:    "roomName",
-								Value: c.RoomName,
+								Name:  "message",
+								ID:    "message",
+								Value: c.Message,
 								Markup: vecty.Markup(
 									event.Input(func(ev *vecty.Event) {
-										c.RoomName = ev.Target.Get("value").String()
+										c.Message = ev.Target.Get("value").String()
 									}),
 								),
 							},
 						},
 					},
 					&bs4.Button{
+						Type: prop.TypeSubmit,
 						Markup: vecty.Markup(event.Click(func(ev *vecty.Event) {
-							log.Println("create new room:", c.RoomName)
-							js.Global.Get("location").Set("hash", "#/room/"+c.RoomName)
-						})),
-						Children: vecty.Text("Create & Enter!"),
+							dispatcher.Dispatch(actions.Message{
+								Message: c.Message,
+							})
+							c.Message = ""
+							vecty.Rerender(c)
+						}).PreventDefault()),
+						Children: vecty.Text("Send"),
 					},
 				),
 			},

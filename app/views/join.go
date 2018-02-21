@@ -2,9 +2,11 @@ package views
 
 import (
 	"github.com/gopherjs/vecty"
+	"github.com/gopherjs/vecty/elem"
 	bs4 "github.com/nobonobo/bootstrap4"
 
 	"github.com/nobonobo/vecty-sample/app/components"
+	"github.com/nobonobo/vecty-sample/app/store"
 )
 
 // JoinView ...
@@ -26,6 +28,9 @@ func (c *JoinView) Render() vecty.ComponentOrHTML {
 				},
 			},
 		},
-		Contents: vecty.List{},
+		Contents: vecty.List{
+			elem.Heading1(vecty.Text("Join Room")),
+			&components.JoinForm{Label: "Join", RoomID: c.Name, Nickname: store.Nickname},
+		},
 	}
 }

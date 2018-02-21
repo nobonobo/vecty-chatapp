@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/go-humble/router"
-	"github.com/google/uuid"
+	orig "github.com/go-humble/router"
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/gopherjs/vecty"
 
+	_ "github.com/nobonobo/vecty-sample/app/handlers"
+	"github.com/nobonobo/vecty-sample/app/router"
+	_ "github.com/nobonobo/vecty-sample/app/store"
 	"github.com/nobonobo/vecty-sample/app/views"
 )
 
@@ -19,21 +21,17 @@ func main() {
 	vecty.AddStylesheet("https://fonts.googleapis.com/icon?family=Material+Icons")
 	vecty.AddStylesheet("assets/app.css")
 
-	r := router.New()
-	r.ForceHashURL = true
-	r.HandleFunc("/", func(ctx *router.Context) {
-		vecty.RenderBody(&views.TopView{})
+	router.HandleFunc("/", func(ctx *orig.Context) {
+		router.RenderBody(&views.TopView{})
 	})
-	r.HandleFunc("/new", func(ctx *router.Context) {
-		vecty.RenderBody(&views.NewView{
-			RoomName: uuid.New().String(),
-		})
+	router.HandleFunc("/new", func(ctx *orig.Context) {
+		router.RenderBody(&views.NewView{})
 	})
-	r.HandleFunc("/join/{name}", func(ctx *router.Context) {
-		vecty.RenderBody(&views.JoinView{Name: ctx.Params["name"]})
+	router.HandleFunc("/join/{uuid}", func(ctx *orig.Context) {
+		router.RenderBody(&views.JoinView{Name: ctx.Params["uuid"]})
 	})
-	r.HandleFunc("/room/{name}", func(ctx *router.Context) {
-		vecty.RenderBody(&views.RoomView{Name: ctx.Params["name"]})
+	router.HandleFunc("/room/{uuid}", func(ctx *orig.Context) {
+		router.RenderBody(&views.RoomView{Name: ctx.Params["uuid"]})
 	})
-	r.Start()
+	router.Start()
 }

@@ -6,12 +6,12 @@ import (
 	bs4 "github.com/nobonobo/bootstrap4"
 
 	"github.com/nobonobo/vecty-sample/app/components"
+	"github.com/nobonobo/vecty-sample/app/store"
 )
 
 // NewView ...
 type NewView struct {
 	vecty.Core
-	RoomName string `vecty:"prop"`
 }
 
 // Render ...
@@ -28,8 +28,8 @@ func (c *NewView) Render() vecty.ComponentOrHTML {
 			},
 		},
 		Contents: vecty.List{
-			elem.Heading1(vecty.Text("New room")),
-			&components.NewForm{RoomName: c.RoomName},
+			elem.Heading1(vecty.Text("New Room")),
+			&components.JoinForm{New: true, Label: "Create & Enter", Nickname: store.Nickname},
 		},
 	}
 }

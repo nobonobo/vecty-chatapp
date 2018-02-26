@@ -38,7 +38,7 @@ func (c *TopView) Render() vecty.ComponentOrHTML {
 				elem.Heading1(vecty.Text("Top")),
 				elem.Paragraph(
 					vecty.Markup(vecty.Class("lead")),
-					vecty.Text("dead-simple chap app"),
+					vecty.Text("dead-simple chat app"),
 				),
 				elem.Paragraph(
 					vecty.Markup(vecty.Class("lead")),

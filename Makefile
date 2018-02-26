@@ -16,3 +16,12 @@ build: assets
 
 run:
 	cd dist && ./server
+
+docker-build:
+	docker build --rm -t nobonobo/chatapp .
+
+docker-run:
+	docker run -it --rm -p 8888:8888 nobonobo/chatapp .
+
+docker-shell:
+	docker run -it --rm -p 8888:8888 --entrypoint=sh nobonobo/chatapp

@@ -1,6 +1,6 @@
 package dispatcher
 
-import "github.com/nobonobo/vecty-sample/app/actions"
+import "github.com/nobonobo/vecty-chatapp/app/actions"
 
 // ID ...
 type ID int

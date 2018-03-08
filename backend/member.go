@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"github.com/nobonobo/vecty-sample/app/models"
+	"github.com/nobonobo/vecty-chatapp/app/models"
 	"golang.org/x/net/websocket"
 )
 

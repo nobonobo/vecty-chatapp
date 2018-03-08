@@ -7,8 +7,8 @@ import (
 	"github.com/gopherjs/vecty/prop"
 
 	bs4 "github.com/nobonobo/bootstrap4"
-	"github.com/nobonobo/vecty-sample/app/actions"
-	"github.com/nobonobo/vecty-sample/app/dispatcher"
+	"github.com/nobonobo/vecty-chatapp/app/actions"
+	"github.com/nobonobo/vecty-chatapp/app/dispatcher"
 )
 
 // ChatForm ...

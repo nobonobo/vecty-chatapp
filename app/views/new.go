@@ -5,8 +5,8 @@ import (
 	"github.com/gopherjs/vecty/elem"
 	bs4 "github.com/nobonobo/bootstrap4"
 
-	"github.com/nobonobo/vecty-sample/app/components"
-	"github.com/nobonobo/vecty-sample/app/store"
+	"github.com/nobonobo/vecty-chatapp/app/components"
+	"github.com/nobonobo/vecty-chatapp/app/store"
 )
 
 // NewView ...

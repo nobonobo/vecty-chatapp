@@ -10,7 +10,7 @@ import (
 	"golang.org/x/net/websocket"
 
 	"github.com/google/uuid"
-	"github.com/nobonobo/vecty-sample/app/models"
+	"github.com/nobonobo/vecty-chatapp/app/models"
 )
 
 // Setup ...

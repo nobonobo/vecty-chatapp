@@ -5,12 +5,12 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/nobonobo/vecty-sample/app/models"
+	"github.com/nobonobo/vecty-chatapp/app/models"
 
-	"github.com/nobonobo/vecty-sample/app/actions"
-	"github.com/nobonobo/vecty-sample/app/dispatcher"
-	"github.com/nobonobo/vecty-sample/app/router"
-	"github.com/nobonobo/vecty-sample/app/store"
+	"github.com/nobonobo/vecty-chatapp/app/actions"
+	"github.com/nobonobo/vecty-chatapp/app/dispatcher"
+	"github.com/nobonobo/vecty-chatapp/app/router"
+	"github.com/nobonobo/vecty-chatapp/app/store"
 )
 
 func init() {

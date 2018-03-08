@@ -5,10 +5,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/gopherjs/vecty"
 
-	_ "github.com/nobonobo/vecty-sample/app/handlers"
-	"github.com/nobonobo/vecty-sample/app/router"
-	_ "github.com/nobonobo/vecty-sample/app/store"
-	"github.com/nobonobo/vecty-sample/app/views"
+	_ "github.com/nobonobo/vecty-chatapp/app/handlers"
+	"github.com/nobonobo/vecty-chatapp/app/router"
+	_ "github.com/nobonobo/vecty-chatapp/app/store"
+	"github.com/nobonobo/vecty-chatapp/app/views"
 )
 
 func main() {

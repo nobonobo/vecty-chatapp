@@ -7,8 +7,8 @@ Demo: https://chatapp.irieda.com
 ## get sample go source code
 
 ```sh
-go get -d github.com/nobonobo/vecty-sample
-cd $GOPATH/src/github.com/nobonobo/vecty-sample
+go get -d github.com/nobonobo/vecty-chatapp
+cd $GOPATH/src/github.com/nobonobo/vecty-chatapp
 ```
 
 ## development server start

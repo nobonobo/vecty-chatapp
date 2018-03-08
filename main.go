@@ -9,7 +9,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/nobonobo/vecty-sample/backend"
+	"github.com/nobonobo/vecty-chatapp/backend"
 )
 
 func main() {

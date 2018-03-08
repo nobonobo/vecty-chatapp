@@ -15,10 +15,10 @@ import (
 	"github.com/goxjs/websocket"
 	bs4 "github.com/nobonobo/bootstrap4"
 
-	"github.com/nobonobo/vecty-sample/app/components"
-	"github.com/nobonobo/vecty-sample/app/models"
-	"github.com/nobonobo/vecty-sample/app/router"
-	"github.com/nobonobo/vecty-sample/app/store"
+	"github.com/nobonobo/vecty-chatapp/app/components"
+	"github.com/nobonobo/vecty-chatapp/app/models"
+	"github.com/nobonobo/vecty-chatapp/app/router"
+	"github.com/nobonobo/vecty-chatapp/app/store"
 )
 
 // RoomView ...
